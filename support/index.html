@@ -126,6 +126,29 @@
       border-bottom: 1px solid var(--glass-border);
     }
 
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      width: 32px; height: 32px;
+      object-fit: contain;
+      border-radius: 8px;
+      filter: drop-shadow(0 0 8px var(--orange-glow));
+    }
+    .nav-logo span {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .nav-logo span em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
     .nav-brand {
       font-size: 14px;
       font-weight: 600;
@@ -740,11 +763,11 @@
   <div id="toast" role="alert" aria-live="polite"></div>
 
   <!-- Nav -->
-  <nav>
-<a href="https://tipsypal.oakdev.app" class="nav-brand">
-  <img src="assets/icon.png" alt="TipsyPal icon" />
-  Tipsy<span>Pal</span>
-</a><div class="nav-status">      <div class="breath-dot" aria-label="Support online">
+<nav aria-label="Main navigation">
+    <a href="/" class="nav-logo">
+      <img src="assets/icon.png" alt="TipsyPal icon" />
+      <span>Tipsy<em>Pal</em></span>
+    </a>      <div class="breath-dot" aria-label="Support online">
         <div class="breath-dot-ring2"></div>
         <div class="breath-dot-ring"></div>
         <div class="breath-dot-core"></div>
