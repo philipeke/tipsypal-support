@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TipsyPal Support — OakDev & AI</title>
+  <meta name="description" content="Get support for TipsyPal by OakDev & AI AB. We're here to help." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:        #FF6B2B;
+      --orange-glow:   #FF6B2B66;
+      --orange-soft:   #FF8C5A;
+      --bg:            #080A0F;
+      --bg2:           #0D1017;
+      --glass-bg:      rgba(255,255,255,0.04);
+      --glass-border:  rgba(255,255,255,0.08);
+      --glass-hover:   rgba(255,255,255,0.07);
+      --text:          #F0F2F5;
+      --text-muted:    rgba(240,242,245,0.45);
+      --text-subtle:   rgba(240,242,245,0.65);
+      --radius-lg:     20px;
+      --radius-xl:     28px;
+      --radius-pill:   999px;
+      --transition:    0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Animated Background ───────────────────────────────────────────── */
+    .bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bg-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+      animation: orbDrift 18s ease-in-out infinite alternate;
+    }
+    .bg-orb.o1 {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, #FF6B2B, transparent 70%);
+      top: -200px; left: -200px;
+      animation-duration: 22s;
+    }
+    .bg-orb.o2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, #6B3BFF, transparent 70%);
+      bottom: -100px; right: -150px;
+      animation-duration: 17s;
+      animation-delay: -8s;
+      opacity: 0.08;
+    }
+    .bg-orb.o3 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, #FF6B2B, transparent 70%);
+      top: 50%; left: 60%;
+      animation-duration: 25s;
+      animation-delay: -4s;
+      opacity: 0.06;
+    }
+
+    @keyframes orbDrift {
+      0%   { transform: translate(0, 0) scale(1); }
+      50%  { transform: translate(60px, 40px) scale(1.08); }
+      100% { transform: translate(-40px, 80px) scale(0.95); }
+    }
+
+    /* Grid noise overlay */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* ─── Layout ────────────────────────────────────────────────────────── */
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ─── Nav Bar ───────────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      margin: 0 -24px;
+      background: rgba(8,10,15,0.75);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .nav-brand {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+    }
+    .nav-brand span { color: var(--orange); }
+
+    .nav-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-subtle);
+    }
+
+    /* ─── Breathing Orange Dot ──────────────────────────────────────────── */
+    .breath-dot {
+      position: relative;
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+    }
+    .breath-dot-core {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--orange);
+      animation: breathCore 2.4s ease-in-out infinite;
+    }
+    .breath-dot-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.5px solid var(--orange);
+      animation: breathRing 2.4s ease-in-out infinite;
+      opacity: 0;
+    }
+    .breath-dot-ring2 {
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1px solid var(--orange);
+      animation: breathRing 2.4s ease-in-out infinite 0.4s;
+      opacity: 0;
+    }
+
+    @keyframes breathCore {
+      0%, 100% { transform: scale(1);   opacity: 1;    box-shadow: 0 0 6px  var(--orange-glow); }
+      50%       { transform: scale(1.3); opacity: 0.9;  box-shadow: 0 0 16px var(--orange-glow); }
+    }
+    @keyframes breathRing {
+      0%   { transform: scale(0.6); opacity: 0.8; }
+      60%  { transform: scale(1.8); opacity: 0; }
+      100% { transform: scale(1.8); opacity: 0; }
+    }
+
+    /* ─── Hero ──────────────────────────────────────────────────────────── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 72px 0 56px;
+    }
+
+    .hero-logo-wrap {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 32px;
+    }
+    .hero-logo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--orange-glow) 0%, transparent 70%);
+      animation: logoPulse 3s ease-in-out infinite;
+    }
+    @keyframes logoPulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50%       { opacity: 1;   transform: scale(1.1); }
+    }
+
+    .hero-logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 0 24px var(--orange-glow));
+      animation: logoFloat 6s ease-in-out infinite;
+    }
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--orange));
+    }
+    .hero-eyebrow::after { background: linear-gradient(90deg, var(--orange), transparent); }
+
+    h1 {
+      font-size: clamp(38px, 8vw, 62px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #FFFFFF 30%, rgba(255,255,255,0.5) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+    h1 span {
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-soft) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text-subtle);
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-subtle);
+      backdrop-filter: blur(12px);
+    }
+
+    /* ─── Section Label ─────────────────────────────────────────────────── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--glass-border), transparent);
+    }
+
+    /* ─── Glass Card ────────────────────────────────────────────────────── */
+    .glass-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      margin-bottom: 16px;
+    }
+    .glass-card:hover {
+      border-color: rgba(255,255,255,0.14);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    /* ─── Support Intro Card ────────────────────────────────────────────── */
+    .support-intro p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text-subtle);
+    }
+    .support-intro p + p { margin-top: 14px; }
+    .support-intro strong { color: var(--text); font-weight: 600; }
+
+    /* ─── Contact Grid ──────────────────────────────────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 540px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    .contact-tile {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color var(--transition), transform var(--transition), background var(--transition);
+    }
+    .contact-tile:hover {
+      border-color: rgba(255,107,43,0.35);
+      transform: translateY(-2px);
+      background: rgba(255,107,43,0.05);
+    }
+
+    .tile-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(255,107,43,0.12);
+      border: 1px solid rgba(255,107,43,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+    .tile-body { min-width: 0; }
+    .tile-body strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+    .tile-body span {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ─── Response Time Banner ──────────────────────────────────────────── */
+    .response-banner {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 22px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,107,43,0.07);
+      border: 1px solid rgba(255,107,43,0.18);
+      margin-bottom: 16px;
+    }
+    .response-banner svg { flex-shrink: 0; }
+    .response-banner p {
+      font-size: 14px;
+      color: var(--text-subtle);
+      line-height: 1.5;
+    }
+    .response-banner p strong { color: var(--orange); font-weight: 600; }
+
+    /* ─── Contact Form ──────────────────────────────────────────────────── */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 540px) { .form-grid { grid-template-columns: 1fr; } }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text);
+      outline: none;
+      transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      -webkit-appearance: none;
+    }
+    input::placeholder, textarea::placeholder { color: var(--text-muted); }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(255,107,43,0.5);
+      background: rgba(255,107,43,0.04);
+      box-shadow: 0 0 0 3px rgba(255,107,43,0.12);
+    }
+    select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(240,242,245,0.45)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+    select option { background: #1a1d24; color: var(--text); }
+    textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 8px;
+      padding: 16px 28px;
+      border: none;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--orange), var(--orange-soft));
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+      box-shadow: 0 8px 32px rgba(255,107,43,0.35);
+    }
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .submit-btn:hover::before { opacity: 1; }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(255,107,43,0.5);
+    }
+    .submit-btn:active { transform: scale(0.98); }
+    .submit-btn.loading { opacity: 0.7; pointer-events: none; }
+
+    .submit-btn .btn-text { display: inline-flex; align-items: center; gap: 8px; }
+
+    /* Form success state */
+    .form-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      padding: 20px 0;
+    }
+    .form-success.show { display: flex; }
+    .form-success-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(255,107,43,0.12);
+      border: 1.5px solid rgba(255,107,43,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      animation: successPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes successPop {
+      0%   { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .form-success h3 { font-size: 20px; font-weight: 700; }
+    .form-success p  { font-size: 15px; color: var(--text-subtle); }
+
+    /* ─── Policy Links ──────────────────────────────────────────────────── */
+    .policy-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 540px) { .policy-links { grid-template-columns: 1fr; } }
+
+    .policy-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      padding: 24px 16px;
+      border-radius: var(--radius-lg);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color var(--transition), transform var(--transition), background var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .policy-link::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-soft));
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+    .policy-link:hover::before { transform: scaleX(1); }
+    .policy-link:hover {
+      border-color: rgba(255,107,43,0.3);
+      transform: translateY(-3px);
+      background: rgba(255,107,43,0.04);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+    }
+    .policy-link .plink-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(255,107,43,0.1);
+      border: 1px solid rgba(255,107,43,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .policy-link:hover .plink-icon {
+      background: rgba(255,107,43,0.18);
+      transform: scale(1.08);
+    }
+    .plink-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .plink-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .plink-arrow {
+      font-size: 12px;
+      color: var(--orange);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ─── Company Info ──────────────────────────────────────────────────── */
+    .company-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 540px) { .company-grid { grid-template-columns: 1fr; } }
+
+    .company-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.055);
+    }
+    .company-item dt {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .company-item dd {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ─── Divider ───────────────────────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glass-border) 30%, var(--glass-border) 70%, transparent);
+      margin: 48px 0;
+    }
+
+    /* ─── Footer ────────────────────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding-top: 32px;
+    }
+    .footer-logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .footer-logo-row img { width: 28px; height: 28px; object-fit: contain; opacity: 0.7; }
+    .footer-logo-row span { font-size: 14px; font-weight: 600; color: var(--text-muted); }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+      margin-bottom: 20px;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--orange); }
+
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(240,242,245,0.3);
+      line-height: 1.7;
+    }
+    .footer-copy a { color: var(--orange); text-decoration: none; }
+
+    /* ─── Scroll reveal ─────────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Toast ─────────────────────────────────────────────────────────── */
+    #toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(24px);
+      background: rgba(20,22,28,0.92);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(20px);
+      color: var(--text);
+      padding: 12px 24px;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ─── Utilities ─────────────────────────────────────────────────────── */
+    .mt-4  { margin-top: 16px; }
+    .mb-0  { margin-bottom: 0; }
+    .section-gap { margin-bottom: 48px; }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="bg-canvas" aria-hidden="true">
+    <div class="bg-orb o1"></div>
+    <div class="bg-orb o2"></div>
+    <div class="bg-orb o3"></div>
+  </div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- Toast -->
+  <div id="toast" role="alert" aria-live="polite"></div>
+
+  <!-- Nav -->
+  <nav>
+    <span class="nav-brand">Tipsy<span>Pal</span></span>
+    <div class="nav-status">
+      <div class="breath-dot" aria-label="Support online">
+        <div class="breath-dot-ring2"></div>
+        <div class="breath-dot-ring"></div>
+        <div class="breath-dot-core"></div>
+      </div>
+      Support Online
+    </div>
+  </nav>
+
+  <!-- Page -->
+  <div class="page-wrapper">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-logo-wrap">
+        <img src="assets/logo.png" alt="TipsyPal Logo" class="hero-logo" />
+      </div>
+      <div class="hero-eyebrow">OakDev &amp; AI AB</div>
+      <h1>We've got<br /><span>your back.</span></h1>
+      <p class="hero-sub">
+        Whatever you need — technical help, account questions, or just a friendly chat
+        about TipsyPal — our team is here and ready to help.
+      </p>
+      <div class="hero-badge">
+        <div class="breath-dot" style="width:8px;height:8px;" aria-hidden="true">
+          <div class="breath-dot-ring2"></div>
+          <div class="breath-dot-ring"></div>
+          <div class="breath-dot-core"></div>
+        </div>
+        Typically responding within 48 hours
+      </div>
+    </section>
+
+    <!-- Support Introduction -->
+    <div class="section-gap reveal">
+      <div class="section-label">About</div>
+      <div class="glass-card support-intro">
+        <p>
+          Hello! 👋 We're the team behind <strong>TipsyPal</strong>, crafted with care at
+          <strong>OakDev &amp; AI AB</strong> in Sweden. We take support seriously — because
+          a great app experience doesn't stop at launch.
+        </p>
+        <p>
+          Whether you're running into a technical snag, have a question about your account,
+          want to request a feature, or simply need guidance on how something works — we're
+          just a message away. No bots, no endless queues. Real people, real answers.
+        </p>
+        <p>
+          Use the contact form below or reach us directly via email. Either way, we'll get
+          back to you as quickly as we can — typically <strong>within 48 hours</strong>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Quick Contact Tiles -->
+    <div class="section-gap reveal">
+      <div class="section-label">Contact Us Directly</div>
+      <div class="contact-grid">
+        <a href="mailto:hello@oakdev.app?subject=TipsyPal%20Support%20Request" class="contact-tile">
+          <div class="tile-icon">✉️</div>
+          <div class="tile-body">
+            <strong>Email</strong>
+            <span>hello@oakdev.app</span>
+          </div>
+        </a>
+        <a href="tel:+46708105766" class="contact-tile">
+          <div class="tile-icon">📞</div>
+          <div class="tile-body">
+            <strong>Phone</strong>
+            <span>+46 70 810 57 66</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Response Banner -->
+      <div class="response-banner">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <p>
+          <strong>Support hours:</strong> Monday–Friday, 09:00–17:00 CET.<br />
+          When emailing, please use subject line <strong>"TipsyPal Support Request"</strong>
+          and include your account email and a description of your issue.
+        </p>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="section-gap reveal">
+      <div class="section-label">Send a Message</div>
+      <div class="glass-card mb-0">
+
+        <!-- Form -->
+        <form id="supportForm" novalidate>
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="How should we address you?" autocomplete="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Account Email</label>
+              <input type="email" id="email" name="email" placeholder="name@example.com" autocomplete="email" required />
+            </div>
+
+            <div class="form-group full">
+              <label for="category">Category</label>
+              <select id="category" name="category" required>
+                <option value="" disabled selected>Select a topic…</option>
+                <option value="technical">🔧 Technical Issue</option>
+                <option value="account">👤 Account &amp; Login</option>
+                <option value="billing">💳 Billing &amp; Purchases</option>
+                <option value="feature">💡 Feature Request</option>
+                <option value="delete">🗑️ Delete Account</option>
+                <option value="privacy">🔒 Privacy &amp; Data</option>
+                <option value="other">💬 Other</option>
+              </select>
+            </div>
+
+            <div class="form-group full">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Brief description of your issue" required />
+            </div>
+
+            <div class="form-group full">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Please describe your issue in as much detail as possible. The more context you give us, the faster we can help!" required></textarea>
+            </div>
+
+          </div>
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span class="btn-text">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+              Send Support Request
+            </span>
+          </button>
+        </form>
+
+        <!-- Success Message (hidden by default) -->
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">🎉</div>
+          <h3>Message Sent!</h3>
+          <p>Thanks for reaching out. We've received your message and will get back to you within 48 hours at the email you provided.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Policies & Legal Links -->
+    <div class="section-gap reveal">
+      <div class="section-label">Policies &amp; Legal</div>
+      <div class="policy-links">
+
+        <a href="https://tipsypal-policies.oakdev.app/privacy.html" target="_blank" rel="noopener noreferrer" class="policy-link">
+          <div class="plink-icon">🔒</div>
+          <div class="plink-title">Privacy Policy</div>
+          <div class="plink-desc">How we collect, use, and protect your personal data.</div>
+          <div class="plink-arrow">
+            Read
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </div>
+        </a>
+
+        <a href="https://tipsypal-policies.oakdev.app/terms.html" target="_blank" rel="noopener noreferrer" class="policy-link">
+          <div class="plink-icon">📄</div>
+          <div class="plink-title">Terms of Use</div>
+          <div class="plink-desc">The rules and guidelines for using TipsyPal.</div>
+          <div class="plink-arrow">
+            Read
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </div>
+        </a>
+
+        <a href="https://tipsypal-policies.oakdev.app/delete-account.html" target="_blank" rel="noopener noreferrer" class="policy-link">
+          <div class="plink-icon">🗑️</div>
+          <div class="plink-title">Delete Account</div>
+          <div class="plink-desc">Request permanent deletion of your account and data.</div>
+          <div class="plink-arrow">
+            Go
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Company Info -->
+    <div class="section-gap reveal">
+      <div class="section-label">Company Information</div>
+      <div class="glass-card mb-0">
+        <dl class="company-grid">
+          <div class="company-item">
+            <dt>Company</dt>
+            <dd>OakDev &amp; AI AB</dd>
+          </div>
+          <div class="company-item">
+            <dt>Reg. Number</dt>
+            <dd>559431-6787</dd>
+          </div>
+          <div class="company-item">
+            <dt>Country</dt>
+            <dd>Sweden 🇸🇪</dd>
+          </div>
+          <div class="company-item">
+            <dt>Phone</dt>
+            <dd>+46 70 810 57 66</dd>
+          </div>
+          <div class="company-item" style="grid-column:1/-1">
+            <dt>Address</dt>
+            <dd>Kristevik 633, 451 96 Uddevalla, Sweden</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- Footer -->
+    <footer class="reveal">
+      <div class="footer-logo-row">
+        <img src="assets/logo.png" alt="TipsyPal" />
+        <span>TipsyPal by OakDev &amp; AI</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://tipsypal-policies.oakdev.app/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://tipsypal-policies.oakdev.app/terms.html" target="_blank" rel="noopener noreferrer">Terms of Use</a>
+        <a href="https://tipsypal-policies.oakdev.app/delete-account.html" target="_blank" rel="noopener noreferrer">Delete Account</a>
+        <a href="mailto:hello@oakdev.app">hello@oakdev.app</a>
+      </nav>
+      <p class="footer-copy">
+        © 2026 OakDev &amp; AI AB. All rights reserved.<br />
+        Last Updated: February 21, 2026
+      </p>
+    </footer>
+
+  </div><!-- /page-wrapper -->
+
+  <script>
+    /* ─── Scroll Reveal ──────────────────────────────────────────────── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger children slightly
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ─── Toast ──────────────────────────────────────────────────────── */
+    function showToast(msg, duration = 3500) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), duration);
+    }
+
+    /* ─── Contact Form (mailto fallback) ────────────────────────────── */
+    const form       = document.getElementById('supportForm');
+    const submitBtn  = document.getElementById('submitBtn');
+    const formSuccess = document.getElementById('formSuccess');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Basic validation
+      const name     = document.getElementById('name').value.trim();
+      const email    = document.getElementById('email').value.trim();
+      const category = document.getElementById('category').value;
+      const subject  = document.getElementById('subject').value.trim();
+      const message  = document.getElementById('message').value.trim();
+
+      if (!name || !email || !category || !subject || !message) {
+        showToast('⚠️  Please fill in all fields.');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showToast('⚠️  Please enter a valid email address.');
+        return;
+      }
+
+      // Loading state
+      submitBtn.classList.add('loading');
+      submitBtn.querySelector('.btn-text').innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 1s linear infinite">
+          <line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/>
+          <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
+          <line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/>
+          <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/>
+        </svg>
+        Sending…`;
+
+      // Build mailto
+      const mailSubject = encodeURIComponent(`TipsyPal Support Request — ${subject}`);
+      const mailBody = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nCategory: ${category}\n\n${message}`
+      );
+      const mailtoURL = `mailto:hello@oakdev.app?subject=${mailSubject}&body=${mailBody}`;
+
+      // Open mail client after short delay for UX feel
+      setTimeout(() => {
+        window.location.href = mailtoURL;
+
+        // Show success
+        setTimeout(() => {
+          form.style.display = 'none';
+          formSuccess.classList.add('show');
+          showToast('✅  Opening your mail client…');
+        }, 600);
+      }, 900);
+    });
+
+    // Spin keyframe for loading icon
+    const spinStyle = document.createElement('style');
+    spinStyle.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
+    document.head.appendChild(spinStyle);
+
+    /* ─── Parallax on scroll ─────────────────────────────────────────── */
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      document.querySelectorAll('.bg-orb').forEach((orb, i) => {
+        const speed = [0.04, 0.02, 0.06][i] || 0.03;
+        orb.style.transform = `translateY(${y * speed}px)`;
+      });
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
