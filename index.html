@@ -4,17 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TipsyPal — Your AI Wingman for Every Message</title>
-  <meta name="description" content="TipsyPal is an AI-powered wingman designed to help you craft witty, smart, and confident messages instantly — even after a long night out with friends when inspiration isn’t exactly at its peak.
-
-Instead of overthinking what to write or struggling with the perfect wording, TipsyPal turns simple intentions into polished, ready-to-send messages. Whether you're replying to someone, posting on social media, or just trying to say the right thing at the right moment, the app helps you communicate effortlessly.
-
-Built for real-world conversations, TipsyPal adapts to different tones — playful, thoughtful, humorous, confident, or charming — helping you express yourself naturally in any social situation.
-
-Rather than writing complicated prompts, users simply choose an intent or mood and instantly receive AI-generated messages that feel authentic and human.
-
-Fast, intuitive, and designed for modern communication, TipsyPal removes friction from everyday messaging and helps you sound your best — whenever it matters." />
+  <meta name="description" content="TipsyPal is your AI-powered wingman. Craft witty, smart, and confident messages instantly — no typing required. Perfect for dating, social media, and every moment in between." />
   <meta property="og:title" content="TipsyPal — Your AI Wingman" />
-  <meta property="og:description" content="Generate witty, smart, and confident messages instantly with AI." />
+  <meta property="og:description" content="Craft witty, smart, and confident messages instantly. No typing required." />
   <meta property="og:type" content="website" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,7 +23,6 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       --orange-soft:  #FF8C5A;
       --orange-dim:   rgba(255,107,43,0.1);
       --bg:           #080A0F;
-      --bg2:          #0D1017;
       --glass-bg:     rgba(255,255,255,0.04);
       --glass-border: rgba(255,255,255,0.08);
       --text:         #F0F2F5;
@@ -152,13 +143,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       margin: 0 auto;
       padding: 0 28px;
     }
-    .container--narrow {
-      max-width: 760px;
-    }
-    .container--wide {
-      max-width: 1200px;
-    }
-
+    .container--narrow { max-width: 760px; }
     section { padding: 120px 0; }
 
     /* ─── Nav ──────────────────────────────────────────────────────── */
@@ -185,8 +170,9 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       text-decoration: none;
     }
     .nav-logo img {
-      width: 30px; height: 30px;
+      width: 32px; height: 32px;
       object-fit: contain;
+      border-radius: 8px;
       filter: drop-shadow(0 0 8px var(--orange-glow));
     }
     .nav-logo span {
@@ -200,31 +186,12 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       color: var(--orange);
     }
 
-    .nav-links {
+    .nav-right {
       display: flex;
       align-items: center;
-      gap: 8px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-subtle);
-      text-decoration: none;
-      padding: 7px 14px;
-      border-radius: var(--radius-pill);
-      transition: color var(--transition), background var(--transition);
-    }
-    .nav-links a:hover {
-      color: var(--text);
-      background: var(--glass-bg);
+      gap: 12px;
     }
 
-    .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
     .nav-status {
       display: flex;
       align-items: center;
@@ -249,7 +216,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       cursor: pointer;
       border: none;
       outline: none;
-      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition), background var(--transition);
+      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
       position: relative;
       overflow: hidden;
     }
@@ -257,7 +224,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.1);
       opacity: 0;
       transition: opacity var(--transition);
     }
@@ -270,9 +237,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       color: #fff;
       box-shadow: 0 8px 32px rgba(255,107,43,0.35);
     }
-    .btn-primary:hover {
-      box-shadow: 0 14px 44px rgba(255,107,43,0.52);
-    }
+    .btn-primary:hover { box-shadow: 0 14px 44px rgba(255,107,43,0.52); }
 
     .btn-ghost {
       background: var(--glass-bg);
@@ -285,10 +250,46 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       color: var(--text);
     }
 
-    .btn-lg {
-      padding: 18px 38px;
-      font-size: 16px;
+    .btn-dark {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text);
     }
+    .btn-dark:hover {
+      background: rgba(255,255,255,0.11);
+    }
+
+    .btn-lg { padding: 18px 38px; font-size: 16px; }
+    .btn-sm { padding: 9px 20px; font-size: 13px; }
+
+    /* Store buttons */
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 22px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text);
+      text-decoration: none;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .store-btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.18);
+      transform: translateY(-2px);
+    }
+    .store-btn svg { flex-shrink: 0; }
+    .store-btn-body { display: flex; flex-direction: column; text-align: left; }
+    .store-btn-body small {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .store-btn-body strong { font-size: 15px; font-weight: 700; line-height: 1.2; }
 
     /* ─── Section Label ────────────────────────────────────────────── */
     .section-label {
@@ -305,24 +306,8 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     .section-label::before {
       content: '';
       display: block;
-      width: 20px;
-      height: 1px;
+      width: 20px; height: 1px;
       background: var(--orange);
-    }
-
-    /* ─── Glass Card ───────────────────────────────────────────────── */
-    .glass-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-xl);
-      backdrop-filter: blur(20px) saturate(160%);
-      -webkit-backdrop-filter: blur(20px) saturate(160%);
-      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-    }
-    .glass-card:hover {
-      border-color: rgba(255,255,255,0.12);
-      transform: translateY(-3px);
-      box-shadow: 0 24px 64px rgba(0,0,0,0.45);
     }
 
     /* ─── Reveal ───────────────────────────────────────────────────── */
@@ -331,10 +316,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       transform: translateY(28px);
       transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-d1 { transition-delay: 0.08s; }
     .reveal-d2 { transition-delay: 0.16s; }
     .reveal-d3 { transition-delay: 0.24s; }
@@ -364,7 +346,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       border: 1px solid rgba(255,107,43,0.2);
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--orange);
       margin-bottom: 36px;
@@ -373,8 +355,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
 
     .hero-logo-wrap {
       position: relative;
-      width: 110px;
-      height: 110px;
+      width: 120px; height: 120px;
       margin: 0 auto 40px;
     }
     .hero-logo-wrap::before {
@@ -398,11 +379,12 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       50%      { opacity: 1;   transform: scale(1.12); }
     }
     .hero-logo {
-      width: 110px; height: 110px;
+      width: 120px; height: 120px;
       object-fit: contain;
+      border-radius: 26px;
       position: relative;
       z-index: 1;
-      filter: drop-shadow(0 0 32px rgba(255,107,43,0.5));
+      filter: drop-shadow(0 0 32px rgba(255,107,43,0.45));
       animation: logoFloat 7s ease-in-out infinite;
     }
     @keyframes logoFloat {
@@ -411,7 +393,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     }
 
     .hero-headline {
-      font-size: clamp(48px, 9vw, 88px);
+      font-size: clamp(46px, 9vw, 86px);
       font-weight: 900;
       line-height: 1.02;
       letter-spacing: -0.04em;
@@ -434,24 +416,38 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     }
 
     .hero-sub {
-      font-size: clamp(16px, 2.2vw, 20px);
+      font-size: clamp(16px, 2.2vw, 19px);
       font-weight: 400;
       color: var(--text-subtle);
-      line-height: 1.65;
-      max-width: 560px;
+      line-height: 1.7;
+      max-width: 580px;
       margin: 0 auto 48px;
     }
 
-    .hero-actions {
+    .hero-stores {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 64px;
+      margin-bottom: 20px;
     }
 
-    .hero-social-proof {
+    .hero-support-link {
+      margin-bottom: 56px;
+    }
+    .hero-support-link a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .hero-support-link a:hover { color: var(--orange); }
+
+    .hero-proof {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -466,71 +462,63 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       color: var(--text-muted);
       font-weight: 500;
     }
-    .proof-dot {
+    .proof-sep {
       width: 4px; height: 4px;
       border-radius: 50%;
       background: var(--glass-border);
     }
 
-    /* Floating UI preview cards */
+    /* ── Floating preview cards ─────────────────────────────────────── */
     .hero-preview {
       position: relative;
       width: 100%;
-      max-width: 620px;
+      max-width: 680px;
       margin: 72px auto 0;
-      height: 260px;
+      height: 280px;
     }
 
     .preview-card {
       position: absolute;
-      background: rgba(13,16,23,0.85);
+      background: rgba(13,16,23,0.88);
       border: 1px solid var(--glass-border);
-      border-radius: 18px;
-      padding: 18px 22px;
-      backdrop-filter: blur(24px);
-      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
-      min-width: 220px;
-      max-width: 300px;
+      border-radius: 20px;
+      padding: 20px 24px;
+      backdrop-filter: blur(28px);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.55);
     }
-
     .preview-card.card-main {
-      left: 50%;
-      top: 0;
+      left: 50%; top: 0;
       transform: translateX(-50%);
       z-index: 3;
-      border-color: rgba(255,107,43,0.2);
-      min-width: 280px;
-      animation: cardFloat 6s ease-in-out infinite;
+      border-color: rgba(255,107,43,0.25);
+      min-width: 300px;
+      animation: cardMain 6s ease-in-out infinite;
     }
     .preview-card.card-left {
-      left: 0;
-      top: 60px;
-      z-index: 2;
-      opacity: 0.7;
-      transform: rotate(-3deg);
-      animation: cardFloat 8s ease-in-out infinite 1s;
+      left: 0; top: 70px;
+      z-index: 2; opacity: 0.65;
+      min-width: 220px;
+      animation: cardSide 8s ease-in-out infinite 1s;
+      transform: rotate(-2.5deg);
     }
     .preview-card.card-right {
-      right: 0;
-      top: 50px;
-      z-index: 2;
-      opacity: 0.7;
-      transform: rotate(3deg);
-      animation: cardFloat 7s ease-in-out infinite 2s;
+      right: 0; top: 60px;
+      z-index: 2; opacity: 0.65;
+      min-width: 220px;
+      animation: cardSide2 7s ease-in-out infinite 2s;
+      transform: rotate(2.5deg);
     }
-    @keyframes cardFloat {
-      0%,100% { transform: translateY(0) translateX(-50%) rotate(0deg); }
-      50%      { transform: translateY(-10px) translateX(-50%) rotate(0deg); }
+    @keyframes cardMain {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(-10px); }
     }
-    .preview-card.card-left { animation: cardFloatLeft 8s ease-in-out infinite 1s; }
-    .preview-card.card-right { animation: cardFloatRight 7s ease-in-out infinite 2s; }
-    @keyframes cardFloatLeft {
-      0%,100% { transform: translateY(0) rotate(-3deg); opacity: 0.7; }
-      50%      { transform: translateY(-8px) rotate(-3deg); opacity: 0.85; }
+    @keyframes cardSide {
+      0%,100% { transform: rotate(-2.5deg) translateY(0); }
+      50%      { transform: rotate(-2.5deg) translateY(-7px); }
     }
-    @keyframes cardFloatRight {
-      0%,100% { transform: translateY(0) rotate(3deg); opacity: 0.7; }
-      50%      { transform: translateY(-8px) rotate(3deg); opacity: 0.85; }
+    @keyframes cardSide2 {
+      0%,100% { transform: rotate(2.5deg) translateY(0); }
+      50%      { transform: rotate(2.5deg) translateY(-7px); }
     }
 
     .pcard-label {
@@ -544,24 +532,23 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       align-items: center;
       gap: 6px;
     }
-    .pcard-label span {
+    .pcard-dot {
       width: 6px; height: 6px;
       border-radius: 50%;
       background: var(--orange);
-      display: inline-block;
+      animation: breathCore 2.4s ease-in-out infinite;
     }
     .pcard-message {
       font-size: 14px;
-      line-height: 1.55;
+      line-height: 1.6;
       color: var(--text);
-      font-weight: 400;
     }
     .pcard-tone {
       display: inline-flex;
       align-items: center;
       gap: 5px;
       margin-top: 12px;
-      padding: 4px 10px;
+      padding: 4px 11px;
       border-radius: var(--radius-pill);
       background: var(--orange-dim);
       border: 1px solid rgba(255,107,43,0.18);
@@ -573,9 +560,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     /* ══════════════════════════════════════════════════════════════════
        WHAT IT IS
     ══════════════════════════════════════════════════════════════════ */
-    #what {
-      padding: 140px 0;
-    }
+    #what { padding: 140px 0; }
 
     .what-inner {
       display: grid;
@@ -588,7 +573,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     }
 
     .what-left h2 {
-      font-size: clamp(32px, 5vw, 52px);
+      font-size: clamp(30px, 5vw, 50px);
       font-weight: 900;
       line-height: 1.08;
       letter-spacing: -0.03em;
@@ -602,8 +587,8 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       background-clip: text;
     }
     .what-left p {
-      font-size: 17px;
-      line-height: 1.75;
+      font-size: 16px;
+      line-height: 1.8;
       color: var(--text-subtle);
       margin-bottom: 14px;
     }
@@ -624,8 +609,8 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       color: var(--text-subtle);
       font-weight: 500;
     }
-    .use-case-list li .uc-icon {
-      width: 34px; height: 34px;
+    .uc-icon {
+      width: 36px; height: 36px;
       border-radius: 10px;
       background: var(--orange-dim);
       border: 1px solid rgba(255,107,43,0.2);
@@ -641,16 +626,20 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       flex-direction: column;
       gap: 14px;
     }
-
-    .what-stat-card {
+    .stat-card {
       padding: 28px 30px;
       border-radius: var(--radius-xl);
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
       backdrop-filter: blur(20px);
+      transition: border-color var(--transition), transform var(--transition);
     }
-    .what-stat-card:first-child {
-      border-color: rgba(255,107,43,0.2);
+    .stat-card:hover {
+      border-color: rgba(255,107,43,0.22);
+      transform: translateX(4px);
+    }
+    .stat-card:first-child {
+      border-color: rgba(255,107,43,0.18);
       background: rgba(255,107,43,0.05);
     }
     .stat-num {
@@ -674,10 +663,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     /* ══════════════════════════════════════════════════════════════════
        HOW IT WORKS
     ══════════════════════════════════════════════════════════════════ */
-    #how {
-      padding: 120px 0;
-      text-align: center;
-    }
+    #how { padding: 120px 0; text-align: center; }
 
     .how-headline {
       font-size: clamp(28px, 4.5vw, 48px);
@@ -691,7 +677,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       color: var(--text-subtle);
       max-width: 460px;
       margin: 0 auto 72px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .steps-grid {
@@ -711,7 +697,8 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       left: calc(33.33% + 10px);
       right: calc(33.33% + 10px);
       height: 1px;
-      background: linear-gradient(90deg, var(--orange-glow), rgba(255,107,43,0.15), var(--orange-glow));
+      background: linear-gradient(90deg, var(--orange-glow), rgba(255,107,43,0.12), var(--orange-glow));
+      pointer-events: none;
     }
     .steps-connector::before,
     .steps-connector::after {
@@ -755,15 +742,10 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     }
 
     .step-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 8px;
+      margin-bottom: 20px;
     }
     .step-num-badge {
       width: 28px; height: 28px;
@@ -775,6 +757,13 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       justify-content: center;
       font-size: 12px;
       font-weight: 800;
+      color: var(--orange);
+    }
+    .step-num span {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       color: var(--orange);
     }
 
@@ -798,9 +787,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     /* ══════════════════════════════════════════════════════════════════
        FEATURES
     ══════════════════════════════════════════════════════════════════ */
-    #features {
-      padding: 120px 0;
-    }
+    #features { padding: 120px 0; }
 
     .features-header {
       text-align: center;
@@ -843,7 +830,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       top: -60px; right: -60px;
       width: 160px; height: 160px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,107,43,0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,107,43,0.05) 0%, transparent 70%);
       pointer-events: none;
     }
     .feature-card:hover {
@@ -880,7 +867,6 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       transform: scale(1.08);
       background: rgba(255,107,43,0.14);
     }
-
     .feature-card h3 {
       font-size: 20px;
       font-weight: 700;
@@ -909,21 +895,60 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       color: var(--orange);
     }
 
+    /* ── Demo block inside featured card ────────────────────────────── */
+    .demo-block {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .demo-row {
+      padding: 16px 18px;
+      border-radius: 14px;
+    }
+    .demo-row.input-row {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+    }
+    .demo-row.output-row {
+      background: rgba(255,107,43,0.08);
+      border: 1px solid rgba(255,107,43,0.2);
+    }
+    .demo-row-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .demo-row-label .dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+    .demo-row-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .demo-arrow {
+      display: flex;
+      justify-content: center;
+      opacity: 0.4;
+    }
+
     /* ══════════════════════════════════════════════════════════════════
        EXPERIENCE
     ══════════════════════════════════════════════════════════════════ */
-    #experience {
-      padding: 140px 0;
-      text-align: center;
-    }
+    #experience { padding: 140px 0; text-align: center; }
 
-    .exp-inner {
-      max-width: 780px;
-      margin: 0 auto;
-    }
+    .exp-inner { max-width: 780px; margin: 0 auto; }
 
     .exp-quote {
-      font-size: clamp(26px, 4.5vw, 46px);
+      font-size: clamp(24px, 4.2vw, 44px);
       font-weight: 800;
       line-height: 1.2;
       letter-spacing: -0.03em;
@@ -931,7 +956,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 40px;
+      margin-bottom: 28px;
     }
     .exp-quote strong {
       background: linear-gradient(135deg, var(--orange), var(--orange-soft));
@@ -940,11 +965,19 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       background-clip: text;
     }
 
+    .exp-body {
+      font-size: 17px;
+      color: var(--text-subtle);
+      line-height: 1.75;
+      max-width: 580px;
+      margin: 0 auto 60px;
+    }
+
     .exp-metrics {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 60px;
+      margin-top: 0;
     }
     @media (max-width: 600px) { .exp-metrics { grid-template-columns: 1fr; } }
 
@@ -954,30 +987,33 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
       backdrop-filter: blur(16px);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .exp-metric:hover {
+      border-color: rgba(255,107,43,0.2);
+      transform: translateY(-3px);
     }
     .exp-metric-num {
-      font-size: 38px;
+      font-size: 36px;
       font-weight: 900;
       letter-spacing: -0.04em;
       background: linear-gradient(135deg, var(--orange), var(--orange-soft));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .exp-metric-label {
       font-size: 13px;
       color: var(--text-muted);
       font-weight: 500;
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     /* ══════════════════════════════════════════════════════════════════
        ABOUT OAKDEV
     ══════════════════════════════════════════════════════════════════ */
-    #about {
-      padding: 120px 0;
-    }
+    #about { padding: 120px 0; }
 
     .about-inner {
       display: grid;
@@ -1005,7 +1041,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     }
     .about-left p {
       font-size: 16px;
-      line-height: 1.75;
+      line-height: 1.8;
       color: var(--text-subtle);
       margin-bottom: 12px;
     }
@@ -1073,10 +1109,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     /* ══════════════════════════════════════════════════════════════════
        FINAL CTA
     ══════════════════════════════════════════════════════════════════ */
-    #cta {
-      padding: 100px 0 140px;
-      text-align: center;
-    }
+    #cta { padding: 100px 0 140px; text-align: center; }
 
     .cta-inner {
       position: relative;
@@ -1090,22 +1123,23 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     .cta-inner::before {
       content: '';
       position: absolute;
-      top: -100px; left: 50%;
+      top: -120px; left: 50%;
       transform: translateX(-50%);
-      width: 500px; height: 300px;
-      background: radial-gradient(ellipse, rgba(255,107,43,0.18) 0%, transparent 70%);
+      width: 600px; height: 360px;
+      background: radial-gradient(ellipse, rgba(255,107,43,0.14) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .cta-logo {
-      width: 72px; height: 72px;
+      width: 80px; height: 80px;
       object-fit: contain;
+      border-radius: 18px;
       margin: 0 auto 28px;
       display: block;
       filter: drop-shadow(0 0 20px rgba(255,107,43,0.5));
       animation: logoFloat 7s ease-in-out infinite;
+      position: relative;
     }
-
     #cta h2 {
       font-size: clamp(30px, 5vw, 54px);
       font-weight: 900;
@@ -1124,21 +1158,21 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     #cta p {
       font-size: 17px;
       color: var(--text-subtle);
-      max-width: 440px;
+      max-width: 460px;
       margin: 0 auto 40px;
       line-height: 1.65;
       position: relative;
     }
-    .cta-actions {
+    .cta-stores {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
       position: relative;
+      margin-bottom: 16px;
     }
     .cta-note {
-      margin-top: 20px;
       font-size: 13px;
       color: var(--text-muted);
       position: relative;
@@ -1161,18 +1195,14 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       grid-template-columns: 1.4fr 1fr 1fr 1fr;
       gap: 40px;
     }
-    @media (max-width: 768px) {
-      .footer-inner { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 480px) {
-      .footer-inner { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .footer-inner { grid-template-columns: 1fr; } }
 
     .footer-brand img {
       width: 36px; height: 36px;
       object-fit: contain;
+      border-radius: 9px;
       margin-bottom: 12px;
-      filter: drop-shadow(0 0 8px rgba(255,107,43,0.4));
     }
     .footer-brand h3 {
       font-size: 16px;
@@ -1231,20 +1261,17 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     }
     .footer-bottom-links a:hover { color: var(--text-muted); }
 
-    /* ─── Responsive Nav ───────────────────────────────────────────── */
+    /* ─── Responsive ───────────────────────────────────────────────── */
     @media (max-width: 640px) {
       nav { padding: 0 20px; }
-      .nav-links { display: none; }
-    }
-    @media (max-width: 480px) {
       #hero { padding: 120px 20px 80px; }
       .hero-preview { display: none; }
+      .cta-inner { padding: 52px 24px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background -->
   <div class="bg-canvas" aria-hidden="true">
     <div class="bg-orb o1"></div>
     <div class="bg-orb o2"></div>
@@ -1255,30 +1282,21 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
   <!-- ─── Nav ─────────────────────────────────────────────────────── -->
   <nav aria-label="Main navigation">
     <a href="/" class="nav-logo">
-      <img src="assets/logo.png" alt="TipsyPal" />
+      <img src="assets/icon.png" alt="TipsyPal icon" />
       <span>Tipsy<em>Pal</em></span>
     </a>
 
-    <ul class="nav-links">
-      <li><a href="#what">Product</a></li>
-      <li><a href="#how">How it works</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="/support">Support</a></li>
-    </ul>
-
-    <div class="nav-cta">
+    <div class="nav-right">
       <div class="nav-status">
-        <div class="breath-dot" aria-label="Live">
+        <div class="breath-dot" aria-label="Active">
           <div class="breath-dot-ring2"></div>
           <div class="breath-dot-ring"></div>
           <div class="breath-dot-core"></div>
         </div>
-        Live
+        Active
       </div>
-      <a href="#cta" class="btn btn-primary" style="padding:9px 20px;font-size:13px;">
-        Get the App
-      </a>
+      <a href="/support" class="btn btn-ghost btn-sm">Support</a>
+      <a href="#cta" class="btn btn-primary btn-sm">Get the App</a>
     </div>
   </nav>
 
@@ -1294,7 +1312,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
           <div class="breath-dot-ring"></div>
           <div class="breath-dot-core"></div>
         </div>
-        AI-Powered Messaging Wingman
+        Your AI Wingman — Always Ready
       </div>
 
       <div class="hero-logo-wrap reveal reveal-d1">
@@ -1302,66 +1320,85 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       </div>
 
       <h1 class="hero-headline reveal reveal-d1">
-        <span class="line-white">Say exactly</span>
-        <span class="line-orange">what you mean.</span>
+        <span class="line-white">The right words.</span>
+        <span class="line-orange">Every time.</span>
       </h1>
 
       <p class="hero-sub reveal reveal-d2">
-        TipsyPal is your AI wingman — instantly crafting witty, smart, and confident
-        messages so you never overthink a reply again.
+        TipsyPal is your AI-powered wingman — instantly crafting witty, smart, and 
+        confident messages for any situation. No typing. No thinking. Just tap, choose 
+        your vibe, and send something great.
       </p>
 
-      <div class="hero-actions reveal reveal-d3">
-        <a href="#cta" class="btn btn-primary btn-lg">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-            <path d="M8 12l3 3 5-5"/>
+      <div class="hero-stores reveal reveal-d3">
+        <!-- Apple App Store -->
+        <a href="#" class="store-btn" aria-label="Download on the App Store">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.18 1.27-2.16 3.79.03 3.02 2.65 4.03 2.68 4.04l-.07.24zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
           </svg>
-          Download TipsyPal
+          <div class="store-btn-body">
+            <small>Download on the</small>
+            <strong>App Store</strong>
+          </div>
         </a>
-        <a href="/support" class="btn btn-ghost btn-lg">
-          Learn More
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+
+        <!-- Google Play -->
+        <a href="#" class="store-btn" aria-label="Get it on Google Play">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3.18 23.76c.37.21.8.22 1.2.04l11.31-6.53-2.4-2.42-10.11 8.91zm-1.12-20.5C2.03 3.5 2 3.76 2 4.04v15.9c0 .28.03.54.06.8l10.44-10.52L2.06 3.26zM20.3 9.46l-2.5-1.45-2.72 2.74 2.72 2.74 2.53-1.46c.72-.42.72-1.15-.03-1.57zM4.38.24C3.98.06 3.55.07 3.18.28L13.5 10.62l2.4-2.42L4.38.24z"/>
           </svg>
+          <div class="store-btn-body">
+            <small>Get it on</small>
+            <strong>Google Play</strong>
+          </div>
         </a>
       </div>
 
-      <div class="hero-social-proof reveal reveal-d4">
+      <div class="hero-support-link reveal reveal-d4">
+        <a href="/support">
+          Need help?
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+          </svg>
+          Visit Support
+        </a>
+      </div>
+
+      <div class="hero-proof reveal reveal-d4">
         <div class="proof-item">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Zero setup required
+          No typing required
         </div>
-        <div class="proof-dot" aria-hidden="true"></div>
+        <div class="proof-sep" aria-hidden="true"></div>
         <div class="proof-item">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Results in seconds
+          Results in under 5 seconds
         </div>
-        <div class="proof-dot" aria-hidden="true"></div>
+        <div class="proof-sep" aria-hidden="true"></div>
         <div class="proof-item">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Built by OakDev
+          Built by OakDev · Sweden
         </div>
       </div>
 
       <!-- Floating Preview Cards -->
-      <div class="hero-preview reveal" aria-hidden="true">
+      <div class="hero-preview" aria-hidden="true">
         <div class="preview-card card-left">
-          <div class="pcard-label"><span></span>Playful</div>
-          <div class="pcard-message">"Okay but hear me out… you + me + that coffee place you keep posting about. Coincidence? I think not. 😏"</div>
-          <div class="pcard-tone">✨ Witty</div>
+          <div class="pcard-label"><div class="pcard-dot"></div>Social Media</div>
+          <div class="pcard-message">"Some nights write themselves. This one did. 🥂"</div>
+          <div class="pcard-tone">✨ Charming</div>
         </div>
 
         <div class="preview-card card-main">
-          <div class="pcard-label"><span></span>Generated by TipsyPal</div>
+          <div class="pcard-label"><div class="pcard-dot"></div>Generated by TipsyPal</div>
           <div class="pcard-message">"I was going to play it cool and wait three days to text… but then I remembered you exist and that felt like a waste."</div>
           <div class="pcard-tone">🔥 Confident</div>
         </div>
 
         <div class="preview-card card-right">
-          <div class="pcard-label"><span></span>Thoughtful</div>
-          <div class="pcard-message">"I just wanted to say — that thing you shared really stuck with me. You see the world in a way I genuinely admire."</div>
-          <div class="pcard-tone">💬 Genuine</div>
+          <div class="pcard-label"><div class="pcard-dot"></div>Icebreaker</div>
+          <div class="pcard-message">"Okay but your profile is genuinely unfair. How is someone supposed to just scroll past that? 😅"</div>
+          <div class="pcard-tone">😄 Witty</div>
         </div>
       </div>
 
@@ -1378,52 +1415,58 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
         <div class="what-left">
           <div class="section-label reveal">The Problem We Solve</div>
           <h2 class="reveal reveal-d1">
-            You know what<br />you want to say.<br />
-            <em>We help you say it.</em>
+            Great messages<br />
+            shouldn't require<br />
+            <em>great effort.</em>
           </h2>
           <p class="reveal reveal-d2">
-            <strong>Writer's block in your messages is real.</strong> Whether it's a crush, 
-            a colleague, or a comeback — staring at a blank text field costs you confidence 
-            and momentum.
+            We've all been there — staring at a blank text field after a long night 
+            with friends, knowing exactly what you want to say but finding zero words 
+            to say it. <strong>That's exactly why TipsyPal exists.</strong>
           </p>
           <p class="reveal reveal-d2">
-            TipsyPal removes the friction. Pick your intent, choose a tone, and receive 
-            perfectly crafted messages in seconds — powered by AI trained for real-world 
-            human conversation.
+            Instead of typing out prompts or wrestling with wording, you simply tap 
+            a category that matches your situation. TipsyPal's AI does the rest — 
+            delivering polished, human-sounding messages in seconds that feel 
+            completely authentic to you.
           </p>
 
           <ul class="use-case-list">
             <li class="reveal reveal-d2">
               <div class="uc-icon" aria-hidden="true">💌</div>
-              Starting a conversation with someone new
+              Icebreakers and dating openers that actually land
             </li>
             <li class="reveal reveal-d3">
-              <div class="uc-icon" aria-hidden="true">🔥</div>
-              Keeping things playful and interesting
+              <div class="uc-icon" aria-hidden="true">📱</div>
+              Social media captions that get engagement
             </li>
             <li class="reveal reveal-d3">
-              <div class="uc-icon" aria-hidden="true">🤝</div>
-              Navigating tricky or sensitive conversations
+              <div class="uc-icon" aria-hidden="true">🥂</div>
+              Messages after a big night when inspiration is low
             </li>
             <li class="reveal reveal-d4">
-              <div class="uc-icon" aria-hidden="true">⚡</div>
-              Replying confidently when words won't come
+              <div class="uc-icon" aria-hidden="true">💬</div>
+              Any moment you want to sound your best
             </li>
           </ul>
         </div>
 
         <div class="what-right">
-          <div class="what-stat-card glass-card reveal">
-            <div class="stat-num">&lt; 3s</div>
-            <div class="stat-label">Average time from intent to ready-to-send message</div>
+          <div class="stat-card reveal">
+            <div class="stat-num">&lt; 5s</div>
+            <div class="stat-label">From tapping a category to a ready-to-send message</div>
           </div>
-          <div class="what-stat-card glass-card reveal reveal-d1">
+          <div class="stat-card reveal reveal-d1">
+            <div class="stat-num">Zero</div>
+            <div class="stat-label">Typing required — ever. Just tap and receive</div>
+          </div>
+          <div class="stat-card reveal reveal-d2">
             <div class="stat-num">10+</div>
-            <div class="stat-label">Distinct tones and communication styles available</div>
+            <div class="stat-label">Tones and styles — playful, confident, charming, and more</div>
           </div>
-          <div class="what-stat-card glass-card reveal reveal-d2">
+          <div class="stat-card reveal reveal-d3">
             <div class="stat-num">∞</div>
-            <div class="stat-label">Variations generated — never the same message twice</div>
+            <div class="stat-label">Unique variations — never the same message twice</div>
           </div>
         </div>
 
@@ -1437,9 +1480,9 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
   <section id="how" aria-label="How TipsyPal works">
     <div class="container">
       <div class="section-label reveal" style="justify-content:center;">How It Works</div>
-      <h2 class="how-headline reveal reveal-d1">Three steps.<br />Perfect message.</h2>
+      <h2 class="how-headline reveal reveal-d1">Ridiculously simple.<br />Surprisingly powerful.</h2>
       <p class="how-sub reveal reveal-d2">
-        No prompts. No guesswork. Just your intent and the right words — instantly.
+        No prompts. No typing. No overthinking. Just your situation and the perfect message — instantly.
       </p>
 
       <div class="steps-grid">
@@ -1448,31 +1491,40 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
         <div class="step-card reveal">
           <div class="step-num">
             <div class="step-num-badge">1</div>
-            Step One
+            <span>Step One</span>
           </div>
           <span class="step-icon" aria-hidden="true">🎯</span>
-          <h3>Set Your Intent</h3>
-          <p>Tell TipsyPal what you're trying to say — start a conversation, reply to something, break the ice, or keep things going.</p>
+          <h3>Pick a Category</h3>
+          <p>
+            Browse the built-in categories — dating opener, social media post, funny reply, 
+            comeback, and more. Tap the one that fits your moment. That's it. No typing needed.
+          </p>
         </div>
 
         <div class="step-card reveal reveal-d1">
           <div class="step-num">
             <div class="step-num-badge">2</div>
-            Step Two
+            <span>Step Two</span>
           </div>
           <span class="step-icon" aria-hidden="true">🎨</span>
           <h3>Choose Your Tone</h3>
-          <p>Witty? Warm? Bold? Playful? Pick the energy you want to bring. TipsyPal matches your personality, not a template.</p>
+          <p>
+            Witty? Confident? Warm? Playful? Select the energy that fits the moment. 
+            TipsyPal adapts the output to match your personality — not a generic template.
+          </p>
         </div>
 
         <div class="step-card reveal reveal-d2">
           <div class="step-num">
             <div class="step-num-badge">3</div>
-            Step Three
+            <span>Step Three</span>
           </div>
           <span class="step-icon" aria-hidden="true">⚡</span>
           <h3>Send with Confidence</h3>
-          <p>Receive multiple AI-crafted messages instantly. Pick the one that feels right, copy it, and hit send. Done.</p>
+          <p>
+            Receive multiple ready-to-send, perfectly worded messages in seconds. 
+            Pick your favourite, copy it, and hit send — sounding smart, sharp, and completely sober.
+          </p>
         </div>
       </div>
     </div>
@@ -1486,64 +1538,83 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       <div class="features-header">
         <div class="section-label reveal" style="justify-content:center;">Built Different</div>
         <h2 class="reveal reveal-d1">Everything you need.<br />Nothing you don't.</h2>
-        <p class="reveal reveal-d2">Precision-built for modern communication — fast, intuitive, and genuinely useful.</p>
+        <p class="reveal reveal-d2">Precision-built for real-world social situations — fast, intuitive, and genuinely useful.</p>
       </div>
 
       <div class="features-grid">
 
-        <!-- Featured large card -->
+        <!-- Featured wide card -->
         <div class="feature-card featured reveal">
           <div>
             <div class="feature-icon-wrap" aria-hidden="true">🤖</div>
-            <h3>AI That Understands Context</h3>
+            <h3>AI That Reads the Room</h3>
             <p>
-              TipsyPal doesn't just autocomplete — it understands the emotional context 
-              of your conversation. Whether you're charming, apologizing, or celebrating, 
-              the AI matches your moment with precision. No generic outputs. No cringe.
+              TipsyPal doesn't just generate text — it understands social context. 
+              Whether you're trying to impress, make someone laugh, break the ice, 
+              or post something that actually gets likes, the AI produces messages 
+              that feel human, relevant, and genuinely clever. No generic outputs. 
+              No robotic phrasing. No cringe.
             </p>
             <div class="feature-tags">
               <span class="ftag">Context-aware</span>
-              <span class="ftag">Emotion-tuned</span>
-              <span class="ftag">Conversation-native</span>
+              <span class="ftag">Tone-matched</span>
+              <span class="ftag">Always spell-checked</span>
+              <span class="ftag">Human-sounding</span>
             </div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="padding:16px 18px;border-radius:14px;background:rgba(255,107,43,0.06);border:1px solid rgba(255,107,43,0.14);">
-              <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;">Input</div>
-              <div style="font-size:14px;color:var(--text-subtle);">I want to text my date but don't want to sound desperate</div>
+          <div class="demo-block">
+            <div class="demo-row input-row">
+              <div class="demo-row-label"><div class="dot"></div>Category Selected</div>
+              <div class="demo-row-text">💌 Dating — First Message</div>
             </div>
-            <div style="display:flex;justify-content:center;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity:0.5"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            <div class="demo-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+              </svg>
             </div>
-            <div style="padding:16px 18px;border-radius:14px;background:rgba(255,107,43,0.08);border:1px solid rgba(255,107,43,0.2);">
-              <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;">✨ TipsyPal Output</div>
-              <div style="font-size:14px;color:var(--text);line-height:1.55;">"Just remembered something funny that made me think of you. Figured that was reason enough."</div>
+            <div class="demo-row output-row">
+              <div class="demo-row-label"><div class="dot"></div>✨ TipsyPal Generated</div>
+              <div class="demo-row-text">"Okay your profile has no right to be this interesting. I had to say something before someone smarter got there first."</div>
             </div>
           </div>
         </div>
 
         <div class="feature-card reveal">
           <div class="feature-icon-wrap" aria-hidden="true">⚡</div>
-          <h3>Instant Results</h3>
-          <p>Messages generated in under 3 seconds. No loading screens, no waiting — just immediate, ready-to-send results every time you need them.</p>
+          <h3>Under 5 Seconds</h3>
+          <p>
+            No waiting, no loading screens. From category tap to ready-to-send message in under 
+            5 seconds. Faster than you can think of something clever yourself.
+          </p>
         </div>
 
         <div class="feature-card reveal reveal-d1">
           <div class="feature-icon-wrap" aria-hidden="true">🎭</div>
-          <h3>Multiple Tones</h3>
-          <p>From playful and flirty to direct and professional — choose the voice that fits the moment. TipsyPal speaks every social register.</p>
+          <h3>Multiple Tones & Styles</h3>
+          <p>
+            Playful, confident, charming, thoughtful, humorous — choose the energy. 
+            TipsyPal covers every social register so you always sound like the best 
+            version of yourself.
+          </p>
         </div>
 
         <div class="feature-card reveal reveal-d2">
-          <div class="feature-icon-wrap" aria-hidden="true">🧠</div>
-          <h3>Smart Communication</h3>
-          <p>Not just messages — communication intelligence. TipsyPal helps you understand what to say and how to say it, making you sharper over time.</p>
+          <div class="feature-icon-wrap" aria-hidden="true">✍️</div>
+          <h3>Zero Typing Required</h3>
+          <p>
+            The entire experience is tap-based. No prompts, no forms, no blank boxes 
+            to stare at. Built for the moments when inspiration isn't exactly at its peak.
+          </p>
         </div>
 
         <div class="feature-card reveal reveal-d3">
           <div class="feature-icon-wrap" aria-hidden="true">🔒</div>
           <h3>Private by Design</h3>
-          <p>Your conversations stay yours. TipsyPal is built with privacy-first principles — we don't store your messages or share your data.</p>
+          <p>
+            Your social life stays yours. TipsyPal is built with privacy-first 
+            principles — we don't store your messages, read your conversations, 
+            or share your data.
+          </p>
         </div>
 
       </div>
@@ -1558,27 +1629,28 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
       <div class="exp-inner">
         <div class="section-label reveal" style="justify-content:center;">The Feeling</div>
         <p class="exp-quote reveal reveal-d1">
-          Imagine never staring at a blank message box again.
-          Just <strong>pure confidence</strong> in every conversation,
-          every time.
+          Imagine never staring at a blank message box again —
+          even at 2am after a great night out with friends.
+          Just <strong>the right words, instantly.</strong>
         </p>
-        <p class="reveal reveal-d2" style="font-size:17px;color:var(--text-subtle);line-height:1.7;max-width:580px;margin:0 auto;">
-          The best version of you — articulate, charming, and effortlessly expressive — 
-          is already in there. TipsyPal just helps you find the right words to show it.
+        <p class="exp-body reveal reveal-d2">
+          TipsyPal isn't about replacing your personality — it's about amplifying it. 
+          The wit, the charm, the confidence? That's already in you. We just make sure 
+          it comes through every time, in every message, without the overthinking.
         </p>
 
         <div class="exp-metrics">
           <div class="exp-metric reveal">
-            <div class="exp-metric-num">Fast</div>
-            <div class="exp-metric-label">Results before the overthinking even starts</div>
+            <div class="exp-metric-num">Sharp</div>
+            <div class="exp-metric-label">Sound articulate and clever every single time</div>
           </div>
           <div class="exp-metric reveal reveal-d1">
             <div class="exp-metric-num">Real</div>
-            <div class="exp-metric-label">Messages that sound like you, not a robot</div>
+            <div class="exp-metric-label">Messages that sound like you — not a robot</div>
           </div>
           <div class="exp-metric reveal reveal-d2">
             <div class="exp-metric-num">Bold</div>
-            <div class="exp-metric-label">Say what you mean with total confidence</div>
+            <div class="exp-metric-label">Send with total confidence, whatever the situation</div>
           </div>
         </div>
       </div>
@@ -1595,23 +1667,24 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
         <div class="about-left">
           <div class="section-label reveal">The Builders</div>
           <h2 class="reveal reveal-d1">
-            Made by <em>OakDev</em> —<br />an AI app studio.
+            Made by <em>OakDev</em> —<br />
+            an AI app studio<br />from Sweden.
           </h2>
           <p class="reveal reveal-d2">
-            <strong>OakDev</strong> is a Swedish AI app studio focused on building 
-            scalable, intelligent mobile products that people actually use. We're 
-            not a consultancy or an agency — we're builders.
+            <strong>OakDev</strong> is a Swedish AI product studio with one focus: 
+            building AI-native mobile apps that people actually use in real life. 
+            Not demos. Not prototypes. Real products.
           </p>
           <p class="reveal reveal-d2">
-            We design and launch AI-native applications with an obsessive focus on 
-            usability, performance, and real-world adoption. TipsyPal is one of our 
-            flagship products — and we're just getting started.
+            We design, build, and launch high-quality AI-powered applications 
+            with an obsessive focus on usability, performance, and genuine adoption. 
+            TipsyPal is one of our flagship products — and this is just the beginning.
           </p>
           <div class="about-pills reveal reveal-d3">
             <span class="about-pill">🇸🇪 Sweden</span>
             <span class="about-pill">🤖 AI-native</span>
             <span class="about-pill">📱 Mobile-first</span>
-            <span class="about-pill">⚡ Indie studio</span>
+            <span class="about-pill">⚡ Product studio</span>
           </div>
         </div>
 
@@ -1619,29 +1692,29 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
           <div class="about-card reveal">
             <div class="about-card-icon" aria-hidden="true">🚀</div>
             <div class="about-card-body">
-              <strong>Product Studio</strong>
-              <span>We build full products from concept to App Store — not just prototypes or MVPs that go nowhere.</span>
+              <strong>Full Product Studio</strong>
+              <span>We build complete products from concept to App Store — not just code. Design, AI, and launch included.</span>
             </div>
           </div>
           <div class="about-card reveal reveal-d1">
             <div class="about-card-icon" aria-hidden="true">🧠</div>
             <div class="about-card-body">
-              <strong>AI-Native Architecture</strong>
-              <span>Every product we build has AI embedded at the core — not bolted on as an afterthought.</span>
+              <strong>AI at the Core</strong>
+              <span>Every product we build has AI embedded from day one — not bolted on as a feature or a gimmick.</span>
             </div>
           </div>
           <div class="about-card reveal reveal-d2">
             <div class="about-card-icon" aria-hidden="true">🎯</div>
             <div class="about-card-body">
-              <strong>Real-World Focus</strong>
-              <span>We build for adoption, not demo days. If it doesn't work for real users, we go back to the drawing board.</span>
+              <strong>Built for Real People</strong>
+              <span>We build for real-world adoption — if it doesn't work for actual users in actual situations, we go back to the drawing board.</span>
             </div>
           </div>
           <div class="about-card reveal reveal-d3">
             <div class="about-card-icon" aria-hidden="true">🤝</div>
             <div class="about-card-body">
               <strong>Venture Builder</strong>
-              <span>We collaborate with founders and companies to turn ideas into production-ready, scalable software.</span>
+              <span>We also collaborate with founders to turn ideas into scalable, production-ready AI software.</span>
             </div>
           </div>
         </div>
@@ -1662,22 +1735,30 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
           Start <em>connecting.</em>
         </h2>
         <p>
-          Download TipsyPal and send your first AI-crafted message in under 30 seconds.
-          Your most confident conversation starts now.
+          Download TipsyPal and send your first AI-crafted message in under 30 seconds. 
+          Your wittiest, most confident self is one tap away.
         </p>
-        <div class="cta-actions">
-          <a href="#" class="btn btn-primary btn-lg">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-              <path d="M8 12l3 3 5-5"/>
+        <div class="cta-stores">
+          <a href="#" class="store-btn" aria-label="Download on the App Store">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.18 1.27-2.16 3.79.03 3.02 2.65 4.03 2.68 4.04l-.07.24zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
             </svg>
-            Download on the App Store
+            <div class="store-btn-body">
+              <small>Download on the</small>
+              <strong>App Store</strong>
+            </div>
           </a>
-          <a href="/support" class="btn btn-ghost btn-lg">
-            Visit Support
+          <a href="#" class="store-btn" aria-label="Get it on Google Play">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M3.18 23.76c.37.21.8.22 1.2.04l11.31-6.53-2.4-2.42-10.11 8.91zm-1.12-20.5C2.03 3.5 2 3.76 2 4.04v15.9c0 .28.03.54.06.8l10.44-10.52L2.06 3.26zM20.3 9.46l-2.5-1.45-2.72 2.74 2.72 2.74 2.53-1.46c.72-.42.72-1.15-.03-1.57zM4.38.24C3.98.06 3.55.07 3.18.28L13.5 10.62l2.4-2.42L4.38.24z"/>
+            </svg>
+            <div class="store-btn-body">
+              <small>Get it on</small>
+              <strong>Google Play</strong>
+            </div>
           </a>
         </div>
-        <p class="cta-note">Free to download · Built by OakDev &amp; AI AB · Sweden 🇸🇪</p>
+        <p class="cta-note">Built by OakDev &amp; AI AB · Uddevalla, Sweden 🇸🇪</p>
       </div>
     </div>
   </section>
@@ -1689,7 +1770,7 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     <div class="footer-inner">
 
       <div class="footer-brand">
-        <img src="assets/logo.png" alt="TipsyPal" />
+        <img src="assets/icon.png" alt="TipsyPal" />
         <h3>Tipsy<span>Pal</span></h3>
         <p>Your AI wingman for every conversation. Built by OakDev &amp; AI AB in Sweden.</p>
       </div>
@@ -1700,14 +1781,15 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
           <li><a href="#what">What is TipsyPal</a></li>
           <li><a href="#how">How it works</a></li>
           <li><a href="#features">Features</a></li>
-          <li><a href="#cta">Download</a></li>
+          <li><a href="#about">About OakDev</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>Company</h4>
+        <h4>Download</h4>
         <ul>
-          <li><a href="#about">About OakDev</a></li>
+          <li><a href="#">App Store</a></li>
+          <li><a href="#">Google Play</a></li>
           <li><a href="/support">Support</a></li>
           <li><a href="mailto:hello@oakdev.app">Contact</a></li>
         </ul>
@@ -1748,35 +1830,33 @@ Fast, intuitive, and designed for modern communication, TipsyPal removes frictio
     }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
     revealEls.forEach(el => observer.observe(el));
 
-    /* Nav background on scroll */
+    /* Nav opacity on scroll */
     const nav = document.querySelector('nav');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 40) {
-        nav.style.background = 'rgba(8,10,15,0.92)';
-      } else {
-        nav.style.background = 'rgba(8,10,15,0.7)';
-      }
+      nav.style.background = window.scrollY > 40
+        ? 'rgba(8,10,15,0.92)'
+        : 'rgba(8,10,15,0.7)';
     }, { passive: true });
 
-    /* Parallax orbs */
+    /* Subtle parallax on orbs */
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
-      const orbs = document.querySelectorAll('.bg-orb');
-      orbs.forEach((orb, i) => {
+      document.querySelectorAll('.bg-orb').forEach((orb, i) => {
         const speed = [0.03, 0.015, 0.05][i] || 0.02;
         orb.style.transform = `translateY(${y * speed}px)`;
       });
     }, { passive: true });
 
-    /* Smooth anchor scrolling offset for fixed nav */
+    /* Smooth scroll with nav offset */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
           e.preventDefault();
-          const offset = 80;
-          const top = target.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({ top, behavior: 'smooth' });
+          window.scrollTo({
+            top: target.getBoundingClientRect().top + window.scrollY - 80,
+            behavior: 'smooth'
+          });
         }
       });
     });
