@@ -262,6 +262,77 @@
     .btn-lg { padding: 18px 38px; font-size: 16px; }
     .btn-sm { padding: 9px 20px; font-size: 13px; }
 
+    /* ─── Nav Dropdown ─────────────────────────────────────────────── */
+    .nav-dropdown {
+      position: relative;
+    }
+    .nav-dropdown-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 700;
+      font-family: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background: linear-gradient(135deg, var(--orange), var(--orange-soft));
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(255,107,43,0.35);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .nav-dropdown-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 44px rgba(255,107,43,0.52);
+    }
+    .nav-dropdown-toggle svg { transition: transform 0.2s; }
+    .nav-dropdown.open .nav-dropdown-toggle svg { transform: rotate(180deg); }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      min-width: 220px;
+      background: rgba(14,16,22,0.96);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 8px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      z-index: 200;
+    }
+    .nav-dropdown.open .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .nav-dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.18s;
+    }
+    .nav-dropdown-item:hover { background: rgba(255,255,255,0.07); }
+    .nav-dropdown-item svg { flex-shrink: 0; opacity: 0.85; }
+    .nav-dropdown-item-body { display: flex; flex-direction: column; }
+    .nav-dropdown-item-body small { font-size: 10px; color: var(--text-muted); font-weight: 400; line-height: 1; }
+    .nav-dropdown-item-body strong { font-size: 14px; font-weight: 700; line-height: 1.4; }
+    .nav-dropdown-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 4px 0; }
+
     /* Store buttons */
     .store-btn {
       display: inline-flex;
@@ -1296,7 +1367,30 @@
         Active
       </div>
       <a href="/support" class="btn btn-ghost btn-sm">Support</a>
-      <a href="#cta" class="btn btn-primary btn-sm">Get the App</a>
+
+      <div class="nav-dropdown" id="navGetApp">
+        <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="navGetAppMenu">
+          Get the App
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" id="navGetAppMenu" role="menu">
+          <a href="https://apps.apple.com/se/app/tipsypal-late-night-message/id6758911152" class="nav-dropdown-item" role="menuitem" target="_blank" rel="noopener noreferrer">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.18 1.27-2.16 3.79.03 3.02 2.65 4.03 2.68 4.04l-.07.24zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div class="nav-dropdown-item-body">
+              <small>Download on the</small>
+              <strong>App Store</strong>
+            </div>
+          </a>
+          <div class="nav-dropdown-divider"></div>
+          <a href="https://play.google.com/store/apps/details?id=com.tipsypal.app&hl=sv" class="nav-dropdown-item" role="menuitem" target="_blank" rel="noopener noreferrer">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.18 23.76c.37.21.8.22 1.2.04l11.31-6.53-2.4-2.42-10.11 8.91zm-1.12-20.5C2.03 3.5 2 3.76 2 4.04v15.9c0 .28.03.54.06.8l10.44-10.52L2.06 3.26zM20.3 9.46l-2.5-1.45-2.72 2.74 2.72 2.74 2.53-1.46c.72-.42.72-1.15-.03-1.57zM4.38.24C3.98.06 3.55.07 3.18.28L13.5 10.62l2.4-2.42L4.38.24z"/></svg>
+            <div class="nav-dropdown-item-body">
+              <small>Get it on</small>
+              <strong>Google Play</strong>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -1332,7 +1426,7 @@
 
       <div class="hero-stores reveal reveal-d3">
         <!-- Apple App Store -->
-        <a href="#" class="store-btn" aria-label="Download on the App Store">
+        <a href="https://apps.apple.com/se/app/tipsypal-late-night-message/id6758911152" class="store-btn" aria-label="Download on the App Store" target="_blank" rel="noopener noreferrer">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.18 1.27-2.16 3.79.03 3.02 2.65 4.03 2.68 4.04l-.07.24zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
           </svg>
@@ -1343,7 +1437,7 @@
         </a>
 
         <!-- Google Play -->
-        <a href="#" class="store-btn" aria-label="Get it on Google Play">
+        <a href="https://play.google.com/store/apps/details?id=com.tipsypal.app&hl=sv" class="store-btn" aria-label="Get it on Google Play" target="_blank" rel="noopener noreferrer">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M3.18 23.76c.37.21.8.22 1.2.04l11.31-6.53-2.4-2.42-10.11 8.91zm-1.12-20.5C2.03 3.5 2 3.76 2 4.04v15.9c0 .28.03.54.06.8l10.44-10.52L2.06 3.26zM20.3 9.46l-2.5-1.45-2.72 2.74 2.72 2.74 2.53-1.46c.72-.42.72-1.15-.03-1.57zM4.38.24C3.98.06 3.55.07 3.18.28L13.5 10.62l2.4-2.42L4.38.24z"/>
           </svg>
@@ -1739,7 +1833,7 @@
           Your wittiest, most confident self is one tap away.
         </p>
         <div class="cta-stores">
-          <a href="#" class="store-btn" aria-label="Download on the App Store">
+          <a href="https://apps.apple.com/se/app/tipsypal-late-night-message/id6758911152" class="store-btn" aria-label="Download on the App Store" target="_blank" rel="noopener noreferrer">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.18 1.27-2.16 3.79.03 3.02 2.65 4.03 2.68 4.04l-.07.24zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
             </svg>
@@ -1748,7 +1842,7 @@
               <strong>App Store</strong>
             </div>
           </a>
-          <a href="#" class="store-btn" aria-label="Get it on Google Play">
+          <a href="https://play.google.com/store/apps/details?id=com.tipsypal.app&hl=sv" class="store-btn" aria-label="Get it on Google Play" target="_blank" rel="noopener noreferrer">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M3.18 23.76c.37.21.8.22 1.2.04l11.31-6.53-2.4-2.42-10.11 8.91zm-1.12-20.5C2.03 3.5 2 3.76 2 4.04v15.9c0 .28.03.54.06.8l10.44-10.52L2.06 3.26zM20.3 9.46l-2.5-1.45-2.72 2.74 2.72 2.74 2.53-1.46c.72-.42.72-1.15-.03-1.57zM4.38.24C3.98.06 3.55.07 3.18.28L13.5 10.62l2.4-2.42L4.38.24z"/>
             </svg>
@@ -1788,8 +1882,8 @@
       <div class="footer-col">
         <h4>Download</h4>
         <ul>
-          <li><a href="#">App Store</a></li>
-          <li><a href="#">Google Play</a></li>
+          <li><a href="https://apps.apple.com/se/app/tipsypal-late-night-message/id6758911152" target="_blank" rel="noopener noreferrer">App Store</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=com.tipsypal.app&hl=sv" target="_blank" rel="noopener noreferrer">Google Play</a></li>
           <li><a href="/support">Support</a></li>
           <li><a href="mailto:hello@oakdev.app">Contact</a></li>
         </ul>
@@ -1859,6 +1953,32 @@
           });
         }
       });
+    });
+
+    /* Nav "Get the App" dropdown */
+    const navDropdown = document.getElementById('navGetApp');
+    const navToggle = navDropdown.querySelector('.nav-dropdown-toggle');
+    const navMenu = document.getElementById('navGetAppMenu');
+
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navDropdown.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navDropdown.contains(e.target)) {
+        navDropdown.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        navDropdown.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.focus();
+      }
     });
   </script>
 
